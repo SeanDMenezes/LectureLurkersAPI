@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 require("dotenv/config");
 const app = express();
 const http = require("http");
+const cors = require("cors");
 const server = http.createServer(app);
 const port = process.env.PORT || 5000;
 
@@ -21,6 +22,7 @@ const { socketAPI } = require('./api/socket-api');
 // middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
 
 app.get("/", (req, res) => res.send("Backend up..."));
 app.use("/api/lurkers", userRoutes);
