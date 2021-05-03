@@ -27,6 +27,7 @@ userRoutes.post("/GetUser", async (req, res) => {
 })
 
 userRoutes.post("/GetUserCourses", async (req, res) => {
+    console.log(req.body)
     const { userID } = req.body;
     try {
         let courses = await Courses.find().or([

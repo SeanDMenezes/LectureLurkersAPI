@@ -6,11 +6,19 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const server = http.createServer(app);
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // socket io
 const { Server } = require("socket.io");
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origins: "*:*",
+        methods: ["GET", "POST"],
+        allowedHeaders: ["content-type", "application/json"],
+        pingTimeout: 7000,
+        pingInterval: 3000
+      }
+});
 
 const userRoutes = require("./routes/userRoutes");
 const courseRoutes = require("./routes/courseRoutes");

@@ -60,7 +60,7 @@ lectureRoutes.post("/CreateLecture", async (req, res) => {
         // save new lecture
         const lecture = new Lectures({
             lectureName,
-            active: true,
+            active: false,
             posts: [],
         });
         const savedLecture = await lecture.save();
