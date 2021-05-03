@@ -27,7 +27,6 @@ userRoutes.post("/GetUser", async (req, res) => {
 })
 
 userRoutes.post("/GetUserCourses", async (req, res) => {
-    console.log(req.body)
     const { userID } = req.body;
     try {
         let courses = await Courses.find().or([
@@ -42,7 +41,6 @@ userRoutes.post("/GetUserCourses", async (req, res) => {
 
 userRoutes.post("/login", async (req, res) => {
     const { username, password } = req.body;
-    console.log(username, password)
     try {
         const user = await Users.findOne({ username });
         if (user) {
