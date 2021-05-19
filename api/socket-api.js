@@ -3,7 +3,7 @@ const { likePost, deletePost, createPost, updateInformation, updateDeleteInforma
 
 const socketAPI = (io) => {
     io.on("connection", (socket) => {
-        console.log("a user connected");
+        console.log("a user connected", socket.id);
     
         socket.on("postAdd", async (lectureID, userID, content) => {
             try {
@@ -36,7 +36,7 @@ const socketAPI = (io) => {
         })
     
         socket.on("disconnect", () => {
-            console.log("a user disconnected");
+            console.log("a user disconnected", socket.id);
         })
     })
 }
